@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+
+        <title>Brandon Roberts Web Experiments</title>
+
+        <link rel="icon" href="images/icon.jpg" />
+    </head>
+    <body>
+        <header>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html">Home/Résumé</a></li>
+                    <li><a href="technicalProjects.html">Technical Projects</a></li>
+                    <li><a href="musicAndPoetry.html">Music and Poetry</a></li>
+                    <li><a href="webExperiments.html" aria-current="page">Web Experiments</a></li>
+                </ul>
+            </nav>
+
+            <h1>Web Experiments</h1>
+
+            <!--- I don't bother trying to serve WEBP here, since GIF turned out to be just as small --->
+            <img src="images/htmlCodePicture.gif" alt="Image of HTML code" height="190px" width="293px"/>
+        </header>
+        <main>
+            <article id="experiments">
+                <section id="embeddings">
+                    <p>Here's an embedding of the homepage for UCSD, the university I attend.</p>
+                    <iframe src="https://ucsd.edu/" name="UCSD Homepage" title="UCSD Homepage"
+                    width="500px" height="300px"></iframe>
+                </section>
+                <section id="formTest">
+                    <p>Here's a test form:</p>
+                    <form id="placeholderForm" method="GET" action="webExperiments.html">
+                        <fieldset>
+                            <legend>Test options for suggestions and options</legend>
+                                <label for="textSuggestions">Text input with suggestions</label>
+                                <input type="text" id="textSuggestions" name="textSuggestions" list="suggestions" />
+                                <datalist id="suggestions">
+                                    <option value="html">HTML</option>
+                                    <option value="css">CSS</option>
+                                    <option value="javaScript">Java Script</option>
+                                </datalist>
+                                <label for="optionsTest">Test of select menu</label>
+                                <select name="optionsTest" id="optionsTest">
+                                    <optgroup label="Web Programming">
+                                        <option value="html">HTML</option>
+                                        <option value="css">CSS</option>
+                                        <option value="javaScript">Java Script</option>
+                                    </optgroup>
+                                    <optgroup label="C-Based Languages">
+                                        <option value="java">Java</option>
+                                        <option value="c">C</option>
+                                        <option value="cpp">C++</option>
+                                    </optgroup>
+                                </select>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Larger text input area</legend>
+                            <label for="paragraphInput">Paragraph input test</label>
+                            <textarea name="paragraphInput" id="paragraphInput" rows="5" cols="25">
+                                Text can be written here
+                            </textarea>
+                        </fieldset>
+                        <button type="submit">Submit</button>
+                    </form>
+                </section>
+                <!-- Referenced MDN's SVG tutorial -->
+                <section id="svgTest">
+                    <p>Test of drawing with an svg image:</p>
+                    <svg height="100px" width="200px" id="exampleSvg">
+                        <rect height="10px" width="50px" x="10px" y="20px" fill="purple" />
+                    </svg>
+                </section>
+                <!-- Referenced MDN's canvas tutorial -->
+                <section id="canvasTest">
+                    <p>Drawing the same with a canvas</p>
+                    <canvas height="100px" width="200px" id="exampleCanvas">
+                        <p>Unable to create canvas.</p>
+                    </canvas>
+                    <!-- Script based off of MDN tutorial canvas script at
+                    https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas -->
+                    <script>
+                        canvas = document.getElementById('exampleCanvas');
+                        context = canvas.getContext('2d');
+                        context.fillStyle = 'purple';
+                        context.fillRect(10, 20, 50, 10);
+                    </script>
+                </section>
+                <section id="divAndSpanTest">
+                    <p>
+                        Using div as a way to label a portion of text in another language
+                        (this was the example use case given in the HTML5 spec)
+                    </p>
+                    <div lang="es">
+                        <p>No hablo mucho español, pero trataré de escribir algo sin embargo.</p>
+                        <p>Esto es el segundo párrafo, tambien en español.</p>
+                    </div>
+                    <p>Here I'm using the <span class="spinAnimation">span</span> tag
+                    as a custom element for later formatting. Maybe I'll use CSS in the future
+                    to make all of the instances of the word <span class="spinAnimation">span</span> in this paragraph spin.</p>
+                </section>
+            </article>
+        </main>
+
+        <hr />
+
+        <footer>
+            <p id="credits">Page made by Brandon Roberts for Professor Powell's WI23 class of CSE 134B</p>
+        </footer>
+    </body>
+</html>
