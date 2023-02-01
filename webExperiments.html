@@ -20,17 +20,20 @@
 
             <h1>Web Experiments</h1>
 
-            <!--- I don't bother trying to serve WEBP here, since GIF turned out to be just as small --->
+            <!--- I don't bother trying to serve WEBP here, since GIF turned out to be just as small -->
             <img src="images/htmlCodePicture.gif" alt="Image of HTML code" height="190" width="293">
         </header>
         <main>
             <article id="experiments">
+                <h2>Experiments</h2>
                 <section id="embeddings">
+                    <h3>Embeddings</h3>
                     <p>Here's an embedding of the homepage for UCSD, the university I attend.</p>
                     <iframe src="https://ucsd.edu/" name="UCSD Homepage" title="UCSD Homepage"
-                    width="500px" height="300px"></iframe>
+                    width="500" height="300"></iframe>
                 </section>
                 <section id="formTest">
+                    <h3>Form Test</h3>
                     <p>Here's a test form:</p>
                     <form id="placeholderForm" method="GET" action="webExperiments.html">
                         <fieldset>
@@ -68,15 +71,17 @@
                 </section>
                 <!-- Referenced MDN's SVG tutorial -->
                 <section id="svgTest">
+                    <h3>SVG Test</h3>
                     <p>Test of drawing with an svg image:</p>
-                    <svg height="100px" width="200px" id="exampleSvg">
-                        <rect height="10px" width="50px" x="10px" y="20px" fill="purple">
+                    <svg height="100" width="200" id="exampleSvg">
+                        <rect height="10" width="50" x="10" y="20" fill="purple"></rect>
                     </svg>
                 </section>
                 <!-- Referenced MDN's canvas tutorial -->
                 <section id="canvasTest">
+                    <h3>Canvas Test</h3>
                     <p>Drawing the same with a canvas</p>
-                    <canvas height="100px" width="200px" id="exampleCanvas">
+                    <canvas height="100" width="200" id="exampleCanvas">
                         <p>Unable to create canvas.</p>
                     </canvas>
                     <!-- Script based off of MDN tutorial canvas script at
@@ -89,6 +94,7 @@
                     </script>
                 </section>
                 <section id="divAndSpanTest">
+                    <h3>Div and Span Test</h3>
                     <p>
                         Using div as a way to label a portion of text in another language
                         (this was the example use case given in the HTML5 spec)

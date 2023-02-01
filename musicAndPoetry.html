@@ -25,9 +25,9 @@
                 with an image as a fallback option if the browser does not support video.
                 Only trying to serve webm before displaying image instead, as file size is important
                 and a fallback image is provided. -->
-                <video controls="controls" preload="metadata" playsinline="true" title="Video of one of my piano improvisations">
+                <video controls="controls" preload="metadata" playsinline="playsinline" title="Video of one of my piano improvisations">
                     <source src="videos/ImprovisationOn19November2022.webm" type="video/webm">
-                    <!--- Here using <picture> to serve WEBP, as in Professor Powell's Images slide deck --->
+                    <!--- Here using <picture> to serve WEBP, as in Professor Powell's Images slide deck -->
                     <picture>
                         <source type="image/webp" srcset="images/pianoPicture.webp">
                         <img src="images/pianoPicture.jpg" alt="Image of piano keys" height="133" width="75">
@@ -64,7 +64,8 @@
                     <thead>
                         <tr>
                             <th scope="colgroup"><b>Compositions</b></th>
-                            <th scope="colgroup" span="2"><b>Files</b></th>
+                            <th scope="col"><b>Files</b></th>
+                            <th scope="col"><b>PDF</b></th>
                         </tr>
                         <tr>
                             <th scope="col">Title</th>
@@ -75,12 +76,12 @@
                     <tbody>
                         <tr>
                             <th scope="row">Placeholder title</th>
-                            <td><audio controls="controls" title="placeholder improvisation" src="audioFiles/Improvisation_14.1.23.m4a"></td>
+                            <td><audio controls="controls" title="placeholder improvisation" src="audioFiles/Improvisation_14.1.23.m4a"></audio></td>
                             <td><a href="#compositionsTable">Placeholder link</a></td>
                         </tr>
                         <tr>
                             <th scope="row">Placeholder title</th>
-                            <td><audio controls="controls" title="placeholder improvisation" src="audioFiles/Improvisation_14.1.23.m4a"></td>
+                            <td><audio controls="controls" title="placeholder improvisation" src="audioFiles/Improvisation_14.1.23.m4a"></audio></td>
                             <td><a href="#compositionsTable">Placeholder link</a></td>
                         </tr>
                     </tbody>
@@ -104,11 +105,11 @@
                     <tbody>
                         <tr>
                             <th scope="row">14/1/2023</th>
-                            <td><audio controls="controls" title="placeholder improvisation" src="audioFiles/Improvisation_14.1.23.m4a"></td>
+                            <td><audio controls="controls" title="placeholder improvisation" src="audioFiles/Improvisation_14.1.23.m4a"></audio></td>
                         </tr>
                         <tr>
                             <th scope="row">14/1/2023</th>
-                            <td><audio controls="controls" title="placeholder improvisation" src="audioFiles/Improvisation_14.1.23.m4a"></td>
+                            <td><audio controls="controls" title="placeholder improvisation" src="audioFiles/Improvisation_14.1.23.m4a"></audio></td>
                         </tr>
                     </tbody>
                 </table>
