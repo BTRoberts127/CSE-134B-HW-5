@@ -112,7 +112,7 @@ main {
 table {
     width: 100%;
     table-layout: auto;
-    font-size: 2rem;
+    font-size: var(--paragraph-font-size);
 }
 
 main li {
@@ -124,7 +124,7 @@ main li {
 main pre {
     max-width: var(--paragraph-max-width);
     min-width: var(--paragraph-min-width);
-    font-size: 2rem;
+    font-size: var(--paragraph-font-size);
 }
 
 main details {
