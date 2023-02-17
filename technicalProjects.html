@@ -6,11 +6,20 @@
         <title>Brandon Roberts Technical Projects</title>
 
         <link rel="icon" href="images/icon.jpg">
+        <link rel="stylesheet" media="screen and (min-width: 1024px)" href="stylesheets/largeScreenStyle.css">
+        <link rel="stylesheet" media="screen and (min-width: 641px) and (max-width: 1023px)" href="stylesheets/mediumScreenStyle.css">
+        <link rel="stylesheet" media="screen and (max-width: 640px)" href="stylesheets/smallScreenStyle.css">
     </head>
     <body>
         <header>
             <nav id="mainNav">
-                <ul>
+                <a id="hambugerOpen" href="#hambugerOpen">
+                    <img src="/images/hambugerMenu.svg" height="45" width="64">
+                </a>
+                <a id="hambugerClose" href="#">
+                    <img src="/images/hambugerMenu.svg" height="45" width="64">
+                </a>
+                <ul id="navContent">
                     <li><a href="index.html">Home/Résumé</a></li>
                     <li><a href="technicalProjects.html" aria-current="page">Technical Projects</a></li>
                     <li><a href="musicAndPoetry.html">Music and Poetry</a></li>
@@ -20,20 +29,22 @@
 
             <h1>Technical Projects</h1>
 
-            <figure id="projectsPicture">
+            <figure id="projectsPicture" class="headingPicture">
                 <!--- Here using <picture> to serve WEBP, as in Professor Powell's Images slide deck -->
                 <picture>
-                    <source type="image/webp" srcset="images/projectsPicture.webp">
-                    <img src="images/projectsPicture.jpg" alt="Flowchart model of the backtracking and GPT-3-based poetry generator" height="127" width="148">
+                    <source srcset="images/projectsPicture185px.webp 185w, images/projectsPicture370px.webp 370w, images/projectsPicture740px.webp 740w"
+                        sizes="(min-width: 10px) 185w, (min-width: 640px) 370w, (min-width: 1024px) 740w" type="image/webp">
+                    <img srcset="images/projectsPicture370px.gif 370w, images/projectsPicture740px.gif 740w"
+                        sizes="(min-width: 640px) 370w, (min-width: 1024px) 740w"
+                        src="images/projectsPicture185px.gif" alt="Flowchart model of the backtracking and GPT-3-based poetry generator" height="127" width="148">
                 </picture>
                 <figcaption>
                     Shown above is the control flow for the poetry generator.<br>
                     Initially made as part of a group project in LIGN 167, Fall 2022.
                 </figcaption>
             </figure>
-        </header>
-        <main>
-            <section id="summary">
+
+            <section id="summary" class="subheading">
                 <h2>Summary</h2>
                 <p>
                     The projects I tend to enjoy focus on the intersection of music, poetry,
@@ -43,7 +54,8 @@
                     which I completed on my own.
                 </p>
             </section>
-
+        </header>
+        <main>
             <article id="poetryGenerator">
                 <h2>Poetry Generator</h2>
                 <section id="overview">
@@ -67,8 +79,8 @@
                         The poetry generator works by requesting tokens one at a time from GPT-3 based
                         on a user-provided prompt. After each token, it checks if the result is inconsistent
                         with the user-provided poetry format (meter, rhyme) and backtracks if there is.
-                        GPT-3 normally struggles with strict poetic forms, making <i>frequent</i> errors in meter
-                        and <i>occasional</i> errors in rhyme. This project sought to rectify this by leveraging
+                        GPT-3 normally struggles with strict poetic forms, making <em>frequent</em> errors in meter
+                        and <em>occasional</em> errors in rhyme. This project sought to rectify this by leveraging
                         the fact that poetic meters are <strong>deterministically</strong> verifiable, meaning
                         it is possible to use backtracking or other search algorithms to prompt GPT-3 correct
                         any errors it makes.

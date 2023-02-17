@@ -6,11 +6,39 @@
         <title>Brandon Roberts Web Experiments</title>
 
         <link rel="icon" href="images/icon.jpg">
+        <link rel="stylesheet" media="screen and (min-width: 1024px)" href="stylesheets/largeScreenStyle.css">
+        <link rel="stylesheet" media="screen and (min-width: 641px) and (max-width: 1023px)" href="stylesheets/mediumScreenStyle.css">
+        <link rel="stylesheet" media="screen and (max-width: 640px)" href="stylesheets/smallScreenStyle.css">
+        <style>
+            div {
+                animation: spin-animation;
+                animation-iteration-count: infinite;
+                animation-duration: 1s;
+                transform-origin: center;
+                rotate: 90deg;
+            }
+            @keyframes spin-animation {
+                from {
+                    transform-origin: center;
+                    rotate: 0deg;
+                }
+                to {
+                    transform-origin: center;
+                    rotate: 360deg;
+                }
+            }
+        </style>
     </head>
     <body>
         <header>
             <nav id="mainNav">
-                <ul>
+                <a id="hambugerOpen" href="#hambugerOpen">
+                    <img src="/images/hambugerMenu.svg" height="45" width="64">
+                </a>
+                <a id="hambugerClose" href="#">
+                    <img src="/images/hambugerMenu.svg" height="45" width="64">
+                </a>
+                <ul id="navContent">
                     <li><a href="index.html">Home/Résumé</a></li>
                     <li><a href="technicalProjects.html">Technical Projects</a></li>
                     <li><a href="musicAndPoetry.html">Music and Poetry</a></li>
@@ -21,7 +49,7 @@
             <h1>Web Experiments</h1>
 
             <!--- I don't bother trying to serve WEBP here, since GIF turned out to be just as small -->
-            <img src="images/htmlCodePicture.gif" alt="Image of HTML code" height="190" width="293">
+            <img class="headingPicture" src="images/htmlCodePicture.gif" alt="Image of HTML code" height="190" width="293">
         </header>
         <main>
             <article id="experiments">

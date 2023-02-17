@@ -6,31 +6,20 @@
         <title>Brandon Roberts Resume and Portfolio</title>
 
         <link rel="icon" href="images/icon.jpg">
-        
-        <!-- No different than default h1 formatting, just a placeholder
-        for once a stylesheet is added. -->
-        <style>
-            h1 {
-                color : black;
-            }
-        </style>
+        <link rel="stylesheet" media="screen and (min-width: 1024px)" href="stylesheets/largeScreenStyle.css">
+        <link rel="stylesheet" media="screen and (min-width: 641px) and (max-width: 1023px)" href="stylesheets/mediumScreenStyle.css">
+        <link rel="stylesheet" media="screen and (max-width: 640px)" href="stylesheets/smallScreenStyle.css">
     </head>
     <body>
-        <!-- Adding this template to potentially be used in the future
-        for more concisely specifying the recurring nav bar across pages -->
-        <template id="navOutline">
-            <nav>
-                <ul>
-                    <li><a href="index.html" aria-current="page">Home/Résumé</a></li>
-                    <li><a href="technicalProjects.html">Technical Projects</a></li>
-                    <li><a href="musicAndPoetry.html">Music and Poetry</a></li>
-                    <li><a href="webExperiments.html">Web Experiments</a></li>
-                </ul>
-            </nav>
-        </template>
         <header>
             <nav id="mainNav">
-                <ul>
+                <a id="hambugerOpen" href="#hambugerOpen">
+                    <img src="/images/hambugerMenu.svg" height="45" width="64">
+                </a>
+                <a id="hambugerClose" href="#">
+                    <img src="/images/hambugerMenu.svg" height="45" width="64">
+                </a>
+                <ul id="navContent">
                     <li><a href="index.html" aria-current="page">Home/Résumé</a></li>
                     <li><a href="technicalProjects.html">Technical Projects</a></li>
                     <li><a href="musicAndPoetry.html">Music and Poetry</a></li>
@@ -41,17 +30,20 @@
             <h1>Brandon Roberts</h1>
 
             <!--- Here using <picture> to serve WEBP, as in Professor Powell's Images slide deck -->
-            <picture id="profilePicture">
-                <source type="image/webp" srcset="images/profilePicture.webp">
-                <img src="images/profilePicture.jpg" alt="Picture of Brandon Roberts" height="281" width="212">
+            <picture id="profilePicture" class="headingPicture">
+                <source srcset="images/profilePicture212px.webp 212w, images/profilePicture424px.webp 424w, images/profilePicture2121px.webp 2121w"
+                    sizes="(min-width: 10px) 212w, (min-width: 640px) 424w, (min-width: 1024px) 2121w" type="image/webp">
+                <img srcset="images/profilePicture424px.jpg 424w, images/profilePicture2121px.jpg 2121w"
+                    sizes="(min-width: 640px) 424w, (min-width: 1024px) 2121w"
+                    src="images/profilePicture212px.jpg" alt="Picture of Brandon Roberts" height="281" width="212">
             </picture>
-        </header>
-        <main>
-            <section id="contact">
+
+            <section id="contact" class="subheading">
                 <h2>Contact</h2>
                 <p id="email">Email: <a href="mailto:brrobert@ucsd.edu">brrobert@ucsd.edu</a></p>
             </section>
-
+        </header>
+        <main>
             <section id="researchInterests">
                 <h2>Research Interests</h2>
                 <p>
@@ -62,12 +54,55 @@
                 </p>
             </section>
             
-            <section id="resume">
+            <!--Machine-generateable in Google Sheets for easy updating-->
+            <article id="resume">
                 <h2>Résumé</h2>
-                <p>
-                    [Resume here]
+                <p id="resumeHeader">
+                        Brandon Roberts<br>
+                        brandontrob@gmail.com (858)-222-9714<br>
+                        8888 Cliffridge Ave, San Diego, CA 92037<br>
+                        University of California, San Diego
                 </p>
-            </section>
+                <section>
+                    <h3>Academic Achievements:</h3>
+                    <p>
+                        Pursuing a BS in Computer Engineering at UC San Diego<br>
+                        Current GPA of 3.940<br>
+                        Phi Beta Kappa<br>
+                        Caledonian Society<br>
+                        Provost Honors 2020-2022
+                    </p>
+                </section>
+                <section>
+                    <h3>Research Experience:</h3>
+                    <p>
+                        Mobility Research Assistant 2020-2021: worked as part of a team of 10 students interviewing stakeholders at MCAS Miramar, and working on human-centered design for optimizing mobility across the base. Helped with data dashboards, visualization, and analysis, research paper drafting and review, and GPX file parsing.
+                    </p>
+                </section>
+                <section>
+                    <h3>Technical Skills:</h3>
+                    <p>
+                        Java, Python, C/C++, MatLab, MIPS/ARM/x86 assembly, System Verilog, Quartus, ModelSim, PSpice, Google Sheets, and Android Studio<br>
+                        Design patterns - strategy, adapter, observer, model-view-presenter, factory, builder, mediator<br>
+                        Design by contract, test-driven development, and behavioral-driven development<br>
+                        Unit testing, integration testing, automated testing, and fuzz testing<br>
+                        GitHub and GitHub Actions<br>
+                        Experience with GPT-3, natural language processing, and its applications<br>
+                        Basics of computer security, operating systems, distributed systems, software engineering, algorithm design, CPU design, ISA design, FPGA use, and hardware accelerator design<br>
+                        Interest in computing and music/procedural composition, algorithm design, and hardware design
+                    </p>
+                </section>
+                <section>
+                    <h3>Activities and Interests:</h3>
+                    <p>
+                        High School Diploma in Social Music, National Piano Guild - 2018<br>
+                        North County Music Festival: 2011-2014, 2016 Recognized Superior Performances<br>
+                        First degree black belt (Shodan Ho) in Karate.<br>
+                        Muir Musical 2022-2023: synth player for Rocky Horror Show and Into the Woods
+                    </p>
+                </section>
+            </article>
+            <!--End resume-->
         </main>
 
         <hr>
