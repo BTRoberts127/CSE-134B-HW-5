@@ -3,6 +3,11 @@ window.crudAssignment_openMenu = openMenu;
 window.customConfirm_customConfirm = customConfirm;
 window.crudAssignment_saveState = saveState;
 
+/**
+ * Opens the add/edit menu to add a new event or update an existing one, based on the value of entry
+ * @param {MouseEvent} event the event that triggered the open
+ * @param {HTMLLIElement} entry the entry initiating the event, if any
+ */
 export function openMenu(event, entry = null) {
     let menu = document.getElementById("addMenu");
     if(entry) {
@@ -23,6 +28,9 @@ export function openMenu(event, entry = null) {
     menu.open = "open";
 }
 
+/**
+ * Updates or adds the entry specified in the addForm fields
+ */
 export function updateEntry() {
     let form = document.forms.addForm;
     let entry;
@@ -42,15 +50,29 @@ export function updateEntry() {
     saveState();
 }
 
+/**
+ * Constructs and returns a String representation of the HTML contents for a blog entry with sanitized user input
+ * @param {Array} strings an Array of Strings representing the template strings
+ * @param {String} title a String representing the entry title
+ * @param {String} date a String representing the entry date
+ * @param {String} summary a String representing the entry summary
+ * @returns the HTML content for the entry, with sanitized user inputs
+ */
 function sanitizeEntry(strings, title, date, summary) {
     return strings[0] + DOMPurify.sanitize(title) + strings[1] + DOMPurify.sanitize(date) + strings[2] + DOMPurify.sanitize(summary) + strings[3];
 }
 
+/**
+ * Writes the current blog contents to local storage
+ */
 function saveState() {
     let data = document.getElementById("blogPostList").innerHTML;
     localStorage.setItem("crudAssignment_blogData", JSON.stringify(data));
 }
 
+/**
+ * Reads and updates the blog contents from local storage
+ */
 export function loadState() {
     let data = localStorage.getItem("crudAssignment_blogData");
     if(data) {//load data
