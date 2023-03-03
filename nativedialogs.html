@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Part 1: Native Dialogs</title>
+        <!-- Copied and linked from https://github.com/cure53/DOMPurify -->
+        <script type="text/javascript" src="dist/purify.min.js"></script>
+        <script>
+            //set up buttons
+            window.addEventListener("DOMContentLoaded", init);
+            
+            /**
+             * Sets event listeners on the buttons
+             */
+            function init() {
+                document.getElementById("alert").addEventListener("click", () => {alert("Alert pressed!")});
+                document.getElementById("confirm").addEventListener("click", confirmAlert);
+                document.getElementById("prompt").addEventListener("click", promptAlert);
+                document.getElementById("saferPrompt").addEventListener("click", saferPromptAlert);
+            }
+            
+            /**
+             * Event listener for confirm button; sends a confirm prompt and updates output
+             */
+            function confirmAlert() {
+                let output = document.getElementById("output");
+                let confirmed;
+                output.innerText = "";//clear output
+                setTimeout(() => {//send prompt
+                    confirmed = confirm("Do you confirm this?");
+                    output.innerHTML = `The value returned by the confirm method is : ${confirmed}`;
+                }, 1);//Using 1 here because 0 fails to clear if clicking with return key
+            }
+
+            /**
+             * Event listener for prompt button; sends a prompt and updates output.
+             * Not secured against XSS.
+             */
+            function promptAlert() {
+                let output = document.getElementById("output");
+                let result;
+                output.innerText = "";//clear output
+                setTimeout(() => {//send prompt
+                    result = prompt("What is your name?");
+                    output.innerHTML = result ? `Prompt result : ${result}` : "User didn't enter anything";
+                }, 1);//Using 1 here because 0 fails to clear if clicking with return key
+            }
+
+            /**
+             * Event listener for saferPrompt button; sends a prompt and updates output.
+             * Secured against XSS with DOMPurify.
+             */
+            function saferPromptAlert() {
+                let output = document.getElementById("output");
+                let result;
+                output.innerText = "";//clear output
+                setTimeout(() => {//send prompt
+                    result = prompt("What is your name?");
+                    output.innerHTML = result ? saferPromptAlertSanitizer`Prompt result : ${result}` : "User didn't enter anything";
+                }, 1);//Using 1 here because 0 fails to clear if clicking with return key
+            }
+
+            /**
+             * Helper function for sanitized template string from saferPrompt.
+             * Uses DOMPurify to prevent XSS.
+             */
+            function saferPromptAlertSanitizer(template, input) {
+                return template[0] + DOMPurify.sanitize(input);
+            }
+        </script>
+    </head>
+    <body>
+        <main>
+            <h1>Part 1: Native Dialogs</h1>
+            <button id="alert">Alert</button>
+            <button id="confirm">Confirm</button>
+            <button id="prompt">Prompt</button>
+            <button id="saferPrompt">Safer Prompt</button>
+            <br>
+            <output id="output"></output>
+        </main>
+    </body>
+</html>

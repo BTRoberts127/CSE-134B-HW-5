@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Part 2: Custom Dialogs</title>
+        <!-- Copied and linked from https://github.com/cure53/DOMPurify -->
+        <script type="text/javascript" src="dist/purify.min.js"></script>
+        <script src="customdialog.js" type="module"></script>
+        <script type="module">
+            import {customAlert, customConfirm, customPrompt} from './customdialog.js';
+
+            //set up buttons
+            window.addEventListener("DOMContentLoaded", init);
+            
+            /**
+             * Sets event listeners on the buttons
+             */
+            function init() {
+                document.getElementById("alert").addEventListener("click", () => {customAlert("Alert Pressed!")});
+                document.getElementById("confirm").addEventListener("click", confirmAlert);
+                document.getElementById("prompt").addEventListener("click", promptAlert);
+            }
+
+            function confirmAlert() {
+                setOutput("");
+                setTimeout(() => {
+                    customConfirm("Do you confirm this?").then((result) => {
+                        setOutput("Confirm result : " + result);
+                    });
+                }, 0);
+            }
+
+            function promptAlert() {
+                setOutput("");
+                setTimeout(() => {
+                    customPrompt("What is your name?").then((result) => {
+                        setOutput(result ? sanitizer`Prompt result : ${result}` : "User didn't enter anything");
+                    });
+                }, 0);
+
+            }
+
+            function sanitizer(template, input) {
+                return template[0] + DOMPurify.sanitize(input);
+            }
+
+            function setOutput(html) {
+                document.getElementById("output").innerHTML = html;
+            }
+        </script>
+    </head>
+    <body>
+        <main>
+            <h1>Part 2: Custom Dialogs</h1>
+            <button id="alert">Alert</button>
+            <button id="confirm">Confirm</button>
+            <button id="prompt">Prompt</button>
+            <br>
+            <output id="output"></output>
+        </main>
+    </body>
+</html>

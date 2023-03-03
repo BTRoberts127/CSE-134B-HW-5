@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Part 4: Styled CRUD</title>
+        <!-- Copied and linked from https://github.com/cure53/DOMPurify -->
+        <script type="text/javascript" src="dist/purify.min.js"></script>
+        <script type="module" src="customConfirm.js"></script>
+        <script type="module" src="styledcrud.js"></script>
+        <script type="module">
+            import {updateEntry, loadState} from './styledcrud.js';
+
+            window.addEventListener("DOMContentLoaded", init);
+
+            function init() {
+                document.forms.addForm.addEventListener("submit", updateEntry);
+                document.getElementById("addButton").addEventListener("click", crudAssignment_openMenu);
+                loadState();
+            }
+        </script>
+        <style>
+            :root {
+                --post-background-color: #eef;
+                --page-background-color: #eee;
+                --hover-background-color: #ffe;
+                --button-background-color: #eff;
+                --post-text-color: #220;
+                --grid-gap: 10px;
+            }
+
+            #emptyMessage:not(:only-child) {
+                display: none;
+            }
+
+            body {
+                background-color: var(--page-background-color);
+            }
+
+            li {
+                display: grid;
+                list-style: none;
+                border-style: double;
+                border-radius: 25px;
+                background-color: var(--post-background-color);
+                display: grid;
+                grid-template-areas:
+                    "heading edit delete"
+                    "summary summary summary";
+                grid-template-columns: 1fr auto auto;
+                grid-template-rows: auto auto;
+                column-gap: var(--grid-gap);
+                height: fit-content;
+                width: 50ch;
+                padding: 10px;
+                position: relative;
+                left: 0%;
+                transition-property: left;
+                transition-duration: 1s;
+            }
+
+            li:hover {
+                position: relative;
+                left: .5%
+            }
+            
+            li .button:first-child {
+                grid-area: edit;
+            }
+            
+            li .button:last-child {
+                grid-area: delete;
+            }
+
+            button {
+                background-color: var(--button-background-color);
+                border-radius: 25px;
+                border-style: double;
+                border-width: 3px;
+                transition-property: background-color;
+                transition-duration: 0.5s;
+                height: fit-content;
+                width: fit-content;
+                font-size: 1rem;
+                padding: 5px;
+            }
+
+            .button {
+                border-radius: 25px;
+                transition-property: background-color;
+                transition-duration: 0.5s;
+            }
+
+            button:hover, .button:hover {
+                background-color: var(--hover-background-color);
+            }
+
+            dialog {
+                background-color: var(--post-background-color);
+                border-style: double;
+                border-radius: 25px;
+            }
+
+            li p:first-child {
+                grid-area: heading;
+                font-weight: 700;
+            }
+
+            li p:last-child {
+                grid-area: summary;
+                color: var(--post-text-color);
+            }
+
+            li span {
+                font-weight: 400;
+                color: var(--post-text-color);
+            }
+
+            form {
+                display: grid;
+                grid-template-areas:
+                    "titleLabel title dateLabel date"
+                    "summaryLabel summary summary summary"
+                    ". . cancel save";
+                grid-template-columns: auto 1fr auto auto;
+                grid-template-rows: auto auto auto;
+                column-gap: var(--grid-gap);
+                row-gap: var(--grid-gap);
+                height: fit-content;
+                width: 90ch;
+            }
+
+            label[for=title] {
+                grid-area: titleLabel;
+            }
+
+            #title {
+                grid-area: title;
+            }
+
+            label[for=date] {
+                grid-area: dateLabel;
+            }
+            
+            #date {
+                grid-area: date;
+            }
+
+            label[for=summary] {
+                grid-area: summaryLabel;
+            }
+
+            #summary {
+                grid-area: summary;
+            }
+
+            #cancel {
+                grid-area: cancel;
+            }
+
+            #save {
+                grid-area: save;
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <h1>Part 4: Styled CRUD</h1>
+            <output id="blogData"><ul id="blogPostList">
+                <li id="emptyMessage">No blog posts</li>
+            </ul></output>
+            <button id="addButton">Add Post</button>
+            <dialog id="addMenu">
+                <form name="addForm" method="dialog">
+                    <label for="title">Post Title:</label>
+                    <input id="title" name="title" type="text">
+                    <label for="date">Post Date:</label>
+                    <input id="date" name="date" type="date">
+                    <label for="summary">Post Summary:</label>
+                    <textarea id="summary" name="summary" rows="5" cols="30"></textarea>
+                    <input id="editIndex" name="editIndex" type="hidden" value="-1">
+                    <button id="cancel" type="reset"
+                        onclick="this.parentElement.parentElement.removeAttribute('open');">
+                        Cancel
+                    </button>
+                    <button id="save" type="submit">Save</button>
+                </form>
+            </dialog>
+        </main>
+    </body>
+</html>

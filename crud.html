@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Part 3: Simple CRUD</title>
+        <!-- Copied and linked from https://github.com/cure53/DOMPurify -->
+        <script type="text/javascript" src="dist/purify.min.js"></script>
+        <script type="module" src="customConfirm.js"></script>
+        <script type="module" src="crud.js"></script>
+        <script type="module">
+            import {updateEntry, loadState} from './crud.js';
+
+            window.addEventListener("DOMContentLoaded", init);
+
+            function init() {
+                document.getElementById("addButton").addEventListener("click", crudAssignment_openMenu);
+                document.forms.addForm.addEventListener("submit", updateEntry);
+                loadState();
+            }
+        </script>
+        <style>
+            #emptyMessage:not(:only-child) {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <h1>Part 3: Simple CRUD</h1>
+            <output id="blogData"><ul id="blogPostList">
+                <li id="emptyMessage">No blog posts</li>
+            </ul></output>
+            <button id="addButton">Add Post</button>
+            <dialog id="addMenu">
+                <form name="addForm" method="dialog">
+                    <label for="title">Post Title:</label>
+                    <input id="title" name="title" type="text">
+                    <label for="date">Post Date:</label>
+                    <input id="date" name="date" type="date">
+                    <label for="summary">Post Summary:</label>
+                    <input id="summary" name="summary" type="text">
+                    <input id="editIndex" name="editIndex" type="hidden" value="-1">
+                    <button id="cancel" type="reset"
+                        onclick="this.parentElement.parentElement.removeAttribute('open');">
+                        Cancel
+                    </button>
+                    <button id="save" type="submit">Save</button>
+                </form>
+            </dialog>
+        </main>
+    </body>
+</html>
