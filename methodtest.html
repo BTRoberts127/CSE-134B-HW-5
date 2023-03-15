@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+
+        <title>Method Test</title>
+        
+        <link rel="icon" href="images/icon.jpg">
+
+        <link rel="stylesheet" media="screen and (min-width: 1024px)" href="stylesheets/largeScreenStyle.css">
+        <link rel="stylesheet" media="screen and (min-width: 641px) and (max-width: 1023px)" href="stylesheets/mediumScreenStyle.css">
+        <link rel="stylesheet" media="screen and (max-width: 640px)" href="stylesheets/smallScreenStyle.css">
+        <script type="module">
+            import {handleButtonPress} from './methodtest.js';
+
+            window.addEventListener("DOMContentLoaded", init);
+
+            function init() {
+                document.getElementById("postBtn").addEventListener("click", () => handleButtonPress(document.getElementById("postBtn")));
+                document.getElementById("getBtn").addEventListener("click", () => handleButtonPress(document.getElementById("getBtn")));
+                document.getElementById("putBtn").addEventListener("click", () => handleButtonPress(document.getElementById("putBtn")));
+                document.getElementById("deleteBtn").addEventListener("click", () => handleButtonPress(document.getElementById("deleteBtn")));
+            }
+        </script>
+    </head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KR52K18MS3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-KR52K18MS3');
+    </script>
+    <body>
+        <header>
+            <nav id="mainNav">
+                <a id="hambugerOpen" href="#hambugerOpen">
+                    <img src="/images/hambugerMenu.svg" height="45" width="64" alt="Open Menu">
+                </a>
+                <a id="hambugerClose" href="#">
+                    <img src="/images/hambugerMenu.svg" height="45" width="64" alt="Close Menu">
+                </a>
+                <ul id="navContent">
+                    <li><a href="index.html">Home/Résumé</a></li>
+                    <li><a href="technicalProjects.html">Technical Projects</a></li>
+                    <li><a href="musicAndPoetry.html">Music and Poetry</a></li>
+                    <li><a href="webExperiments.html">Web Experiments</a></li>
+                    <li><a href="methodtest.html" aria-current="page">Method Test</a></li>
+                    <li><a href="webcomponent.html">Web Component</a></li>
+                </ul>
+            </nav>
+
+            <h1>Method Test</h1>
+        </header>
+        <main>
+            <section id="researchInterests">
+                <h2>Form</h2>
+                <form id="methodTestForm">
+                    <label for="id_field">ID:</label>
+                    <input type="number" id="id_field" name="id">
+
+                    <label for="article_name_field">Article Name:</label>
+                    <input type="text" id="article_name_field" name="article_name">
+
+                    <label for="article_body_field">Article Body:</label>
+                    <textarea id="article_body_field" name="article_body" rows="5" cols="40"></textarea>
+
+                    <input type="hidden" type="date" id="date_field" name="date">
+
+                    <button type="button" id="postBtn" data-form-method="post">Post</button>
+                    <button type="button" id="getBtn" data-form-method="get">Get</button>
+                    <button type="button" id="putBtn" data-form-method="put">Put</button>
+                    <button type="button" id="deleteBtn" data-form-method="delete">Delete</button>
+                    
+                    <label for="xmlImplementation">XMLHTTPRequest</label>
+                    <input type="radio" id="xmlImplementation" name="implementation" value="xmlImplementation" checked="checked">
+                    <label for="fetchImplementation">fetch()</label>
+                    <input type="radio" id="fetchImplementation" name="implementation" value="fetchImplementation">
+                </form>
+                <output id="response"></output>
+            </section>
+        </main>
+
+        <hr>
+
+        <footer>
+            <p id="credits">Page made by Brandon Roberts for Professor Powell's WI23 class of CSE 134B</p>
+        </footer>
+    </body>
+</html>
