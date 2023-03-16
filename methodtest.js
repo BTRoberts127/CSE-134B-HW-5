@@ -149,5 +149,5 @@ function encode(formData) {
  */
 function handleOutput(response) {
     let output = document.getElementById("response");
-    output.innerText = response;
+    output.innerHTML = `<pre>${response}</pre>`;
 }
